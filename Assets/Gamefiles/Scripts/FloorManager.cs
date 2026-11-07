@@ -13,6 +13,7 @@ public class FloorManager : Singleton<FloorManager>
     {
         public string msg;
         public bool isComplete;
+        [Required] public GameObject go_taskGrouping;
         public UnityEvent onStartTask;
         public UnityEvent onCompleteTask;
     }
@@ -35,12 +36,14 @@ public class FloorManager : Singleton<FloorManager>
         currentTask = 0;
         tasks[0].onStartTask.Invoke();
         tasks[0].isComplete = false;
+        tasks[0].go_taskGrouping.SetActive(true);
         SlackManager.Instance.SendSlackMsg(tasks[currentTask].msg);
     }
     
     [Button]
     public void CompleteCurrentTask()
     {
+        tasks[currentTask].go_taskGrouping.SetActive(false);
         tasks[currentTask].isComplete = true;
         tasks[currentTask].onCompleteTask.Invoke();
         currentTask++;
@@ -49,6 +52,7 @@ public class FloorManager : Singleton<FloorManager>
             throw new NotImplementedException("COMPLETED ALL TASKS, NOT IMPLEMETNED YET");
         }
         tasks[currentTask].onStartTask.Invoke();
+        tasks[currentTask].go_taskGrouping.SetActive(true);
         SlackManager.Instance.SendSlackMsg(tasks[currentTask].msg);
     }
     
