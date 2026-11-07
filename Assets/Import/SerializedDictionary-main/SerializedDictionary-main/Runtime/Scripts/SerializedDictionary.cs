@@ -159,18 +159,14 @@ namespace AYellowpaper.SerializedCollections
 
         public void OnBeforeSerialize()
         {
-#if UNITY_EDITOR
-            if (UnityEditor.BuildPipeline.isBuildingPlayer)
-                LookupTable.RemoveDuplicates();
-
-            // TODO: is there a better way to check if the dictionary was deserialized with reflection?
-            if (_serializedList.Count == 0 && Count > 0)
-                SyncDictionaryToBackingField_Editor();
-#else
             _serializedList.Clear();
+
             foreach (var kvp in this)
-                _serializedList.Add(new SerializedKeyValuePair<TKey, TValue>(kvp.Key, kvp.Value));
-#endif
+            {
+                _serializedList.Add(
+                    new SerializedKeyValuePair<TKey, TValue>(kvp.Key, kvp.Value)
+                );
+            }
         }
     }
 }

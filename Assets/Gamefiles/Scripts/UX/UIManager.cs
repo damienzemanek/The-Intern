@@ -13,6 +13,8 @@ public class UIManager : Singleton<UIManager>
         HUD,
         WriteName
     }
+    
+    public FloorDisplays defaultDisplay = FloorDisplays.HUD;
 
     [Serializable]
     public class UIDisplay
@@ -22,7 +24,9 @@ public class UIManager : Singleton<UIManager>
     }
     
     public SerializedDictionary<FloorDisplays, UIDisplay> displays;
-    
+
+    private void Start() => Display(defaultDisplay);
+
     [Button]
     public void Display(FloorDisplays display)
     {

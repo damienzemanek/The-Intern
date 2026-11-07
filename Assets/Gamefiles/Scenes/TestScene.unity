@@ -634,11 +634,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bff0f1b14b35ec4aaeb48a3fb73b673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  defaultDisplay: 0
   displays:
     _serializedList:
     - Key: 0
       Value:
-        objects: []
+        objects:
+        - {fileID: 69157314}
+        onDisplay:
+          m_PersistentCalls:
+            m_Calls: []
+    - Key: 1
+      Value:
+        objects:
+        - {fileID: 958663404}
         onDisplay:
           m_PersistentCalls:
             m_Calls: []
@@ -1298,7 +1307,6 @@ Transform:
   - {fileID: 800262405}
   - {fileID: 299919799}
   - {fileID: 183953538}
-  - {fileID: 1682474271}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &321951711
@@ -3200,6 +3208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab34983e903e2344ca1783a5cf0cbda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
+  deaths: 0
+  internName: 
   floorState: 0
   elevatorDoorAnimator: {fileID: 842058135}
   playerController: {fileID: 7700156456865423122}
@@ -4980,8 +4990,9 @@ GameObject:
   - component: {fileID: 1682474275}
   - component: {fileID: 1682474274}
   - component: {fileID: 1682474277}
+  - component: {fileID: 1682474278}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: INTERACT_WriteName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4996,11 +5007,11 @@ Transform:
   m_GameObject: {fileID: 1682474270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.25881964, z: -0, w: 0.9659257}
-  m_LocalPosition: {x: 0, y: 1.54, z: 0.096}
+  m_LocalPosition: {x: 2.93815, y: 1.54, z: 25.578001}
   m_LocalScale: {x: 0.4438906, y: 0.4438906, z: 0.4438906}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 315983618}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
 --- !u!65 &1682474274
 BoxCollider:
@@ -5097,10 +5108,36 @@ MonoBehaviour:
   detections: []
   OnDetectINSP:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1682474278}
+        m_TargetAssemblyTypeName: WriteName, Assembly-CSharp
+        m_MethodName: InteractWithNameTag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnUndetectINSP:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1682474278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682474270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4f1ab4da9fa82479a1d1bb10108f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WriteName
+  ip_txtName: {fileID: 1749045632}
+  interactable: 1
 --- !u!1 &1683640421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5786,7 +5823,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1682474278}
+        m_TargetAssemblyTypeName: WriteName, Assembly-CSharp
+        m_MethodName: OnWriteNameComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -7527,5 +7576,6 @@ SceneRoots:
   - {fileID: 321951715}
   - {fileID: 842058134}
   - {fileID: 1340240340}
+  - {fileID: 1682474271}
   - {fileID: 315983618}
   - {fileID: 1226990212}
