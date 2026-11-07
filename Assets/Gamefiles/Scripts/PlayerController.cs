@@ -5,8 +5,8 @@ using static UnityEngine.CursorLockMode;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool moveLocked, lookLocked;
     public float speed;
-    
     public MouseLookEX.MouseLookSettings mouseLookSettings;
     public CharacterController charController;
     public Transform camTransform;
@@ -15,13 +15,13 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        mouseLookSettings.UpdateMouseLook(Input.mousePositionDelta);
+        if(!lookLocked) mouseLookSettings.UpdateMouseLook(Input.mousePositionDelta);
         Move(); 
     }
-
-
+    
     void Move()
     {
+        if(moveLocked) return;
         var yInputScalar = Input.GetAxis("Vertical");
         var xInputScalar = Input.GetAxis("Horizontal");
         var fwd = camTransform.forward * yInputScalar;
