@@ -25,12 +25,14 @@ public class FloorManager : Singleton<FloorManager>
         
     }
 
+    [Button]
     public void E_CreatedNameComplete()
     {
         floorState = FloorStates.CreatedNameComplete;
         elevatorDoorAnimator.Play("Open");
     }
-
+    
+    [Button]
     public void E_ExitElevator()
     {
         elevatorDoorAnimator.Play("Close");
