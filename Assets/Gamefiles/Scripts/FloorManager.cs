@@ -5,7 +5,10 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class FloorManager : Singleton<FloorManager>
-{ 
+{
+    public int deaths;
+    public string internName;
+    
     public enum FloorStates
     {
         Elevator,
@@ -18,18 +21,21 @@ public class FloorManager : Singleton<FloorManager>
     public FloorStates floorState;
     [Required] public Animator elevatorDoorAnimator;
     [Required] public PlayerController playerController;
-    
+
+    private void Start() => StartLevel();
+
+    [Button]
     public void StartLevel()
     {
         floorState = FloorStates.Elevator;
-        
     }
 
     [Button]
-    public void E_CreatedNameComplete()
+    public void E_CreatedNameComplete(string internName)
     {
         floorState = FloorStates.CreatedNameComplete;
         elevatorDoorAnimator.Play("Open");
+        this.internName = internName;
     }
     
     [Button]

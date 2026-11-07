@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
+using DesignPatterns.CreationalPatterns;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     public enum FloorDisplays
     {
