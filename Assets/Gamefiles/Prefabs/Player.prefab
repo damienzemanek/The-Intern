@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5671354713885432963}
   m_Layer: 0
-  m_Name: '[HEAD] Cam Sys'
+  m_Name: Cam Sys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6149790458327739194}
+  - {fileID: 4517202126965064792}
   m_Father: {fileID: 4018654958150350035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &775605745004254075
@@ -154,6 +154,38 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2669289747834802057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4517202126965064792}
+  m_Layer: 0
+  m_Name: Cam Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4517202126965064792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669289747834802057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6149790458327739194}
+  m_Father: {fileID: 5671354713885432963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2815225970500270390
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,11 +214,11 @@ Transform:
   m_GameObject: {fileID: 2815225970500270390}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5671354713885432963}
+  m_Father: {fileID: 4517202126965064792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1550861938300738040
 Camera:
@@ -343,8 +375,8 @@ MonoBehaviour:
     look: {x: 0, y: 0}
     rot: {x: 0, y: 0}
     body: {fileID: 0}
-    head: {fileID: 5671354713885432963}
-    useBody: 1
+    head: {fileID: 6149790458327739194}
+    useBody: 0
     clampXRotation: 0
     clampYRotation: 1
     updateMouseLook: 1
@@ -353,8 +385,8 @@ MonoBehaviour:
     sensitivity: {x: 1, y: 1}
     clampX: {x: -90, y: 90}
     clampY: {x: -90, y: 90}
-  charController: {fileID: 0}
-  camTransform: {fileID: 0}
+  charController: {fileID: 6704372940415445061}
+  camTransform: {fileID: 6149790458327739194}
 --- !u!143 &6704372940415445061
 CharacterController:
   m_ObjectHideFlags: 0

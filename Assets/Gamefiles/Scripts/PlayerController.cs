@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public void Update()
     {
         mouseLookSettings.UpdateMouseLook(Input.mousePositionDelta);
-        Move();
+        Move(); 
     }
 
 

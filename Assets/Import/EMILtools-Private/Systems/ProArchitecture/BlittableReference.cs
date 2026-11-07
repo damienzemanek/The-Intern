@@ -3,9 +3,9 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Sirenix.OdinInspector;
 
-namespace ProArchitecture.Data;
-
-/// <summary>
+namespace ProArchitecture.Data
+{
+    /// <summary>
 /// A handle that allows managed classes to be stored and mutated within unmanaged structs.
 /// Bridges the gap between the GC-managed heap and unmanaged pointer logic.
 ///
@@ -85,6 +85,9 @@ public static unsafe class BlitEX
 
 
 
+
+
+}
 
 
 
