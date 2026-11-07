@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     public CharacterController charController;
     public Transform camTransform;
 
+    public string defaultAnimName = "Default";
+    public Animator phoneAnimator;
+    public string usePhoneAnimName = "Use";
+
     public KeyCode phoneKey;
     
     void Awake() => CursorEX.Set(false, Locked);
@@ -19,11 +23,20 @@ public class PlayerController : MonoBehaviour
     { 
         if (Input.GetKeyDown(phoneKey))
         {
-            UIManager.Instance.Display(
-                (UIManager.Instance.currentDisplay == UIManager.FloorDisplays.Phone ||
-                 UIManager.Instance.currentDisplay == UIManager.FloorDisplays.Slack)
-                ? UIManager.FloorDisplays.HUD
-                : UIManager.FloorDisplays.Phone);
+            phoneAnimator.gameObject.SetActive(true);
+            if (UIManager.Instance.currentDisplay == UIManager.FloorDisplays.HUD)
+            {
+                phoneAnimator.PlayOnEnd(usePhoneAnimName, () =>
+                {
+                    UIManager.Instance.Display(UIManager.FloorDisplays.Phone);
+                });
+            }
+            else if(UIManager.Instance.currentDisplay == UIManager.FloorDisplays.Phone 
+                    || UIManager.Instance.currentDisplay == UIManager.FloorDisplays.Slack)
+            {
+                UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
+                phoneAnimator.CrossFade(defaultAnimName, 0.6f);
+            }
         }
         
         

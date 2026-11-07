@@ -3,6 +3,7 @@ using DesignPatterns.CreationalPatterns;
 using EMILtools.Extensions;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using static AudioManager;
 
 public class SlackManager : Singleton<SlackManager>
 {
@@ -11,8 +12,9 @@ public class SlackManager : Singleton<SlackManager>
     [Required] public Sprite bossPic;
     [Required] public GameObject pr_slackMessage;
     [Required] public Transform parent_messageParent;
-
-    private void OnEnable()
+    [Required] public Phone phone;
+    
+    public void OpenSlack()
     {
         slackRect.RefreshLayoutGroupsImmediateAndRecursive();
         go_slackAppNotificationIcon.gameObject.SetActive(false);
@@ -24,7 +26,7 @@ public class SlackManager : Singleton<SlackManager>
         newMsg.Get<SlackMsg>().InitMessage(msg, bossPic);
         slackRect.RefreshLayoutGroupsImmediateAndRecursive();
         go_slackAppNotificationIcon.gameObject.SetActive(true);
-
+        phone.NewNotification();
     }
     
 }

@@ -25,6 +25,8 @@ public class WriteName : MonoBehaviour
         FloorManager.Instance.playerController.moveLocked = true;
         CursorEX.Set(true, CursorLockMode.None);
         interactable = false;
+        OnCompleteUITransition.Invoke();
+        Debug.Log("Showing INteract");
     }
     
     public void OnWriteNameComplete()
