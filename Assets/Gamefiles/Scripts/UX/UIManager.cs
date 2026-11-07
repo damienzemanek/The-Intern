@@ -11,10 +11,13 @@ public class UIManager : Singleton<UIManager>
     public enum FloorDisplays
     {
         HUD,
-        WriteName
+        WriteName,
+        Phone,
+        Slack
     }
     
     public FloorDisplays defaultDisplay = FloorDisplays.HUD;
+    public FloorDisplays currentDisplay = FloorDisplays.HUD;
 
     [Serializable]
     public class UIDisplay
@@ -25,8 +28,11 @@ public class UIManager : Singleton<UIManager>
     
     public SerializedDictionary<FloorDisplays, UIDisplay> displays;
 
-    private void Start() => Display(defaultDisplay);
+    private void Start() => Display(currentDisplay = defaultDisplay);
 
+    
+    public void Display(int enumindx) => Display((FloorDisplays)enumindx);
+     
     [Button]
     public void Display(FloorDisplays display)
     {
@@ -37,6 +43,7 @@ public class UIManager : Singleton<UIManager>
         }
         displays[display].objects.ForEach(obj => obj.SetActive(true));
         displays[display].onDisplay?.Invoke();
+        currentDisplay = display;
     }
     
     

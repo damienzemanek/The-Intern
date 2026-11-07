@@ -1,22 +1,33 @@
-using System;
+ using System;
 using UnityEngine;
 using EMILtools.Extensions;
 using static UnityEngine.CursorLockMode;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool moveLocked, lookLocked;
+    public bool moveLocked, lookLocked, stopInputReading;
     public float speed;
     public MouseLookEX.MouseLookSettings mouseLookSettings;
     public CharacterController charController;
     public Transform camTransform;
 
+    public KeyCode phoneKey;
+    
     void Awake() => CursorEX.Set(false, Locked);
 
     public void Update()
-    {
+    { 
+        if (Input.GetKeyDown(phoneKey))
+        {
+            UIManager.Instance.Display(UIManager.Instance.currentDisplay != UIManager.FloorDisplays.Phone
+                ? UIManager.FloorDisplays.Phone
+                : UIManager.FloorDisplays.HUD);
+        }
+        
+        
+        if (stopInputReading) return;
         if(!lookLocked) mouseLookSettings.UpdateMouseLook(Input.mousePositionDelta);
-        Move(); 
+        Move();
     }
     
     void Move()
