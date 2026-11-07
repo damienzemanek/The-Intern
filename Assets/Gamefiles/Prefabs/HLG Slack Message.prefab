@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 923507583756846879}
   - component: {fileID: 1029267375159333728}
   - component: {fileID: 8697817249055766146}
+  - component: {fileID: 4115234798737588280}
   m_Layer: 5
   m_Name: HLG Slack Message
   m_TagString: Untagged
@@ -315,3 +316,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &4115234798737588280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281771819969556026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d052991232e9649aefa9649f2ee369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlackMsg
+  txt_MessageName: {fileID: 3841949870487072896}
+  spr_personImage: {fileID: 1083733208730818251}

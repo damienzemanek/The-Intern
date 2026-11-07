@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     { 
         if (Input.GetKeyDown(phoneKey))
         {
-            UIManager.Instance.Display(UIManager.Instance.currentDisplay != UIManager.FloorDisplays.Phone
-                ? UIManager.FloorDisplays.Phone
-                : UIManager.FloorDisplays.HUD);
+            UIManager.Instance.Display(
+                (UIManager.Instance.currentDisplay == UIManager.FloorDisplays.Phone ||
+                 UIManager.Instance.currentDisplay == UIManager.FloorDisplays.Slack)
+                ? UIManager.FloorDisplays.HUD
+                : UIManager.FloorDisplays.Phone);
         }
         
         
