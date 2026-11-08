@@ -34,6 +34,7 @@ public class CRT : MonoBehaviour
             out var clip);
         src.loop = true;
         src.clip = clip;
+        src.volume = 1f;
         src.Play();
         
         currentPostItDeath++;
@@ -52,12 +53,18 @@ public class CRT : MonoBehaviour
 
     public void OpenEmailAppFromHome()
     {
+        UseSourceWithClip(SourceTrack.Player, AudioClipType.MouseClick,
+            out var clip).PlayOneShot(clip);
+        
         allScreens.ForEach(s => s.SetActive(false));
         go_emailListScreen.SetActive(true);
     }
 
     public void SelectSpecificEmail()
     {
+        UseSourceWithClip(SourceTrack.Player, AudioClipType.MouseClick,
+            out var clip).PlayOneShot(clip);
+        
         allScreens.ForEach(s => s.SetActive(false));
         go_inspectEmailScreen.SetActive(true);
         txt_deathReason.text = FloorManager.Instance.internData[FloorManager.Instance.currentIntern].deathReason;
@@ -66,6 +73,8 @@ public class CRT : MonoBehaviour
     [Button]
     public void MsgSent()
     {
+        UseSourceWithClip(SourceTrack.Player, AudioClipType.MouseClick,
+            out var clip).PlayOneShot(clip);
         go_msgSent.SetActive(true);
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {

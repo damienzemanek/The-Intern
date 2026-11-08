@@ -44,6 +44,9 @@ public class CoffeeMach : MonoBehaviour
 
     public IEnumerator C_DrownEvent()
     {
+        AudioManager.UseSourceWithClip(AudioManager.SourceTrack.Player, AudioManager.AudioClipType.PourCoffee,
+            out var clip).PlayOneShot(clip);
+        
         door.locked = true;
         bool filled = false;
         coffeeMachAnimator.PlayOnEnd(coffeeMugStartFillingAnimName, () => filled = true);
@@ -51,7 +54,14 @@ public class CoffeeMach : MonoBehaviour
         filled = false;
         yield return new WaitForSeconds(2f);
         coffeeMachAnimator.CrossFadeOnEnd(coffeeMugFloodingAnimName, 0.5f, () => filled = true);
-        yield return new WaitForSeconds(drownScreenTime);
+
+        yield return new WaitForSeconds(drownScreenTime / 2);
+        AudioManager.UseSourceWithClip(AudioManager.SourceTrack.Player, AudioManager.AudioClipType.CoffeeOcean,
+            out var clip1).PlayOneShot(clip1);
+        yield return new WaitForSeconds(drownScreenTime / 2);
+
+
+        
         drownScreen.SetActive(true);
         yield return new WaitForSeconds(drowningTime);
         FloorManager.Instance.playerController.Die();

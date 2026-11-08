@@ -48,6 +48,12 @@ public class UIManager : Singleton<UIManager>
     }
     
     public void Display(int enumindx) => Display((FloorDisplays)enumindx);
+
+    public void PlayPhoneBtnSound()
+    {
+        AudioManager.UseSourceWithClip(AudioManager.SourceTrack.Player, AudioManager.AudioClipType.PhoneClick, 
+            out var clip).PlayOneShot(clip);
+    }
      
     [Button]
     public void Display(FloorDisplays display, bool autoCompleteTransition = true)

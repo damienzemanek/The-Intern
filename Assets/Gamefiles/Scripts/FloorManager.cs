@@ -154,12 +154,12 @@ public class FloorManager : Singleton<FloorManager>
 
         var src = UseSourceWithClip(SourceTrack.Long1, AudioClipType.BgMusic1, out var clip);
         src.clip = clip;
+        src.volume = 0.09f;
         src.Play();
         
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {
-            UseSourceWithClip(SourceTrack.Player,
-                AudioClipType.ElevatorDing, out var clip).PlayOneShot(clip);
+            //UseSourceWithClip(SourceTrack.Player, AudioClipType.ElevatorDing, out var clip).PlayOneShot(clip);
             doors.ForEach(d =>
             {
                 d.Get<DetectorTrigger>().ManualExit();

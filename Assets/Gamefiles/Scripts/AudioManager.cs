@@ -32,6 +32,8 @@ public class AudioManager : Singleton<AudioManager>
         Nametag,
         Gunshot,
         ComputerAmbience,
+        BossAmbience,
+        PhoneClick,
     }
 
 
