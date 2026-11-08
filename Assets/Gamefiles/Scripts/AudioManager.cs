@@ -30,6 +30,8 @@ public class AudioManager : Singleton<AudioManager>
         SelfDestructAlarm,
         MouseClick,
         Nametag,
+        Gunshot,
+        ComputerAmbience,
     }
 
 
