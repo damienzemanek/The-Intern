@@ -43,6 +43,7 @@ public class CRT : MonoBehaviour
         txt_deathReason.text = FloorManager.Instance.internData[FloorManager.Instance.currentIntern].deathReason;
     }
     
+    [Button]
     public void MsgSent()
     {
         go_msgSent.SetActive(true);

@@ -109,8 +109,6 @@ public class FloorManager : Singleton<FloorManager>
         playerController.go_blackScreenDie.gameObject.SetActive(false);
         UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
         StartLevel();
-        playerController.transform.position = startPos.position;
-        playerController.transform.localRotation = Quaternion.Euler(0, -180, 0);
         nameTagDetector.ManualExit();
         StartLevel();
         writeName.interactable = true;
