@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DesignPatterns.CreationalPatterns;
+using EMILtools.Extensions;
 using ProSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -102,7 +103,7 @@ public class FloorManager : Singleton<FloorManager>
     {
         elevatorDoorAnimator.Play("Close");
     }
-
+    
     [Button]
     public void ResetDeath()
     {
@@ -110,16 +111,27 @@ public class FloorManager : Singleton<FloorManager>
         UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
         StartLevel();
         nameTagDetector.ManualExit();
-        StartLevel();
+
         writeName.interactable = true;
         writeName.ip_txtName.text = "";
+
         playerController.moveLocked = false;
         playerController.lookLocked = false;
         playerController.stopInputReading = false;
+
         trigger_exitElevator.gameObject.SetActive(true);
+
         currentIntern++;
-        playerController.transform.position = startPos.position;
-        Debug.Log("Reset deeath");
+
+        CharacterController cc = playerController.Get<CharacterController>();
+        cc.enabled = false;
+        playerController.transform.SetPositionAndRotation(
+            startPos.position,
+            startPos.rotation
+        );
+        cc.enabled = true;
+
+        Debug.Log("Reset death");
     }
     
     
