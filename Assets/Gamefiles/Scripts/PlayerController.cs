@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     
     void Awake() => CursorEX.Set(false, Locked);
 
+    [Button]
     public void Die()
     {
         moveLocked = true;
@@ -36,7 +37,8 @@ public class PlayerController : MonoBehaviour
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {
             go_blackScreenDie.SetActive(true);
-            Instantiate(pr_skeletonCorpse, camTransform);
+            var corpse = Instantiate(pr_skeletonCorpse, camTransform.position, Quaternion.identity);
+            corpse.transform.parent = null;
             CoroutineRunner.Instance.RunMethodDelayed(() =>
             {
                 UIManager.Instance.Display(UIManager.FloorDisplays.DeathCRT);
@@ -44,10 +46,15 @@ public class PlayerController : MonoBehaviour
             }, 2f);
         }, deathFrameTime);
     }
-    
-    
+
+    private void LateUpdate()
+    {
+        transform.position = transform.position.With(y: 0);
+    }
+
+
     public void Update()
-    { 
+    {
         if (Input.GetKeyDown(phoneKey))
         {
             phoneAnimator.gameObject.SetActive(true);
