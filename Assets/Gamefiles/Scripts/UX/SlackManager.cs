@@ -17,6 +17,10 @@ public class SlackManager : Singleton<SlackManager>
         "Hey new Intern! So we had some trouble with our last intern... something about a printer. So you're going to take his place!" +
         "I need you to finish what they started. Thanks!";
     
+    public string coffeeDeathSlackMsg =
+        "Hey new Intern! Looks like one of our other interns had a little trouble with the espresso machine..." +
+        "Clarence still wants his coffee though! Get to it.";
+    
     
     public void OpenSlack()
     {

@@ -3025,6 +3025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9052576098830067904, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: audioClips._serializedList.Array.data[20].Value
+      value: 
+      objectReference: {fileID: 8300000, guid: b838f10f3f662134caca095c72f191cc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -116179,6 +116183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab34983e903e2344ca1783a5cf0cbda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
+  endLevel: 0
   currentIntern: 0
   internData:
   - internName: 

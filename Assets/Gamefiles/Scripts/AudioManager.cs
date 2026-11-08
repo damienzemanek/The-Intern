@@ -34,6 +34,9 @@ public class AudioManager : Singleton<AudioManager>
         ComputerAmbience,
         BossAmbience,
         PhoneClick,
+        GeneralAmbience,
+        Pen,
+        Pickup
     }
 
 

@@ -71,6 +71,8 @@ public class ItemHolder : Singleton<ItemHolder>
         if(itemType == ItemType.None) return;
         items[itemType].go_itemObj?.SetActive(true);
         holdingItem = items[itemType];
+        AudioManager.UseSourceWithClip(AudioManager.SourceTrack.Player, AudioManager.AudioClipType.Pickup,
+            out var clip).PlayOneShot(clip);
     }
 
     [Button]

@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         transform.position = transform.position.With(y: 0);
+        if(moveLocked || stopInputReading)
+            Source(SourceTrack.Footsteps).Stop();
     }
 
     public void MoveHeadTo(Vector3 rot)

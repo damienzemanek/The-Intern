@@ -171,7 +171,15 @@ public class FloorManager : Singleton<FloorManager>
             CoroutineRunner.Instance.RunMethodDelayed(() =>
             {
                 SlackManager.Instance.SendSlackMsg(SlackManager.Instance.firstDeathSlackMsg);
-            }, 1.4f);
+            }, 2f);
+        }
+
+        if (currentIntern == 2)
+        {
+            CoroutineRunner.Instance.RunMethodDelayed(() =>
+            {
+                SlackManager.Instance.SendSlackMsg(SlackManager.Instance.coffeeDeathSlackMsg);
+            }, 2f);
         }
 
         if (currentIntern == 3)

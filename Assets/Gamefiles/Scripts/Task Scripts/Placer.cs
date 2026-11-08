@@ -11,5 +11,7 @@ public class Placer : MonoBehaviour
         if (!ItemHolder.IsHoldingItem(lookingForHeldItem)) return;
         onPlace?.Invoke();
         if(removeHeldItem) ItemHolder.Instance.StopHoldingCurrentItem();
+        AudioManager.UseSourceWithClip(AudioManager.SourceTrack.Player, AudioManager.AudioClipType.Pickup,
+            out var clip).PlayOneShot(clip);
     }
 }

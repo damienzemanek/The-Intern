@@ -6,6 +6,7 @@ using EMILtools.Extensions;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using static AudioManager;
 
 public class IntroSeq : MonoBehaviour
 {
@@ -29,6 +30,12 @@ public class IntroSeq : MonoBehaviour
 
     public UnityEvent OnIntroSeqEnd;
 
+    private void Start()
+    {
+        UseSourceWithClip(SourceTrack.Long1, AudioClipType.GeneralAmbience,
+            out var clip).PlayOneShot(clip);
+    }
+
     public void StartIntroSeq()
     {
         go_preIntroUI.SetActive(false);
@@ -41,6 +48,18 @@ public class IntroSeq : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)) Sign();
     }
 
+    public void PlayUISound()
+    {
+        UseSourceWithClip(SourceTrack.Player, AudioClipType.PhoneClick, 
+            out var clip).PlayOneShot(clip);
+    }
+
+    public void PlayUISoundClick()
+    {
+        UseSourceWithClip(SourceTrack.Player, AudioClipType.MouseClick, 
+            out var clip).PlayOneShot(clip);
+    }
+    
     public void StartSigning() => StartCoroutine(C_StartSigning());
 
     [Button]
