@@ -18,4 +18,6 @@ public class LoadSceneConnector : MonoBehaviour
             Debug.LogError($"LoadSceneConnector on {name} failed: No LoadScene component found in the scene to handle loading scene index {sceneIndx}.");
         }
     }
+
+    public void Quit() => Application.Quit();
 }
