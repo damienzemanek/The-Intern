@@ -35,7 +35,7 @@ public class Ask : MonoBehaviour
         yield return new WaitUntil(() => finishedTalking);
         
         finishedTalking = false;
-        UIManager.Instance.SpeakOrCommentate(clarenceResponse, 2f, () => finishedTalking = true);
+        UIManager.Instance.SpeakOrCommentate(clarenceResponse, 5f, () => finishedTalking = true);
         yield return new WaitUntil(() => finishedTalking);
         
         clarenceAnimator.Play(shootAnimName);

@@ -7,7 +7,7 @@ public class LoadSceneConnector : MonoBehaviour
     public void Load(int sceneIndx)
     {
         Debug.Log("Attempting to load new level: " + sceneIndx);
-
+        
         Loader loader = FindAnyObjectByType<Loader>();
         if (loader != null)
         {

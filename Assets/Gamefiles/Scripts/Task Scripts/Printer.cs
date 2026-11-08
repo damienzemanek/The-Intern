@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static AudioManager;
 
 public class Printer : MonoBehaviour
 {
@@ -68,6 +69,11 @@ public class Printer : MonoBehaviour
         StartCoroutine(C_Print());
         FloorManager.Instance.playerController.moveLocked = true;
         FloorManager.Instance.playerController.transform.DOMove(playerLockedLocation.position, 1f);
+        var source = UseSourceWithClip(SourceTrack.Long2,
+            AudioClipType.Printer, out var clip);
+        source.clip = clip;
+        source.loop = true;
+        source.Play();
     }
 
     public IEnumerator C_Print(float time)
@@ -92,6 +98,12 @@ public class Printer : MonoBehaviour
         disps.ForEach(d => d.SetActive(false));
         go_selfDestructDisp.SetActive(true);
         state = "selfDestruct";
+        Source(SourceTrack.Long2).Stop();
+        var source = UseSourceWithClip(SourceTrack.Long2,
+            AudioClipType.SelfDestructAlarm, out var clip);
+        source.clip = clip;
+        source.loop = true;
+        source.Play();
     }
 
     public IEnumerator C_SelfDestructCountdown()
@@ -111,6 +123,9 @@ public class Printer : MonoBehaviour
         
         
         vfx_expl.Play();
+
+        UseSourceWithClip(SourceTrack.Player, AudioClipType.Explosion,
+            out var clip).PlayOneShot(clip);
         FloorManager.Instance.playerController.Die();
         go_placerPaper.gameObject.SetActive(false);
         StartCoroutine(SecondHalfTask());
@@ -159,7 +174,7 @@ public class Printer : MonoBehaviour
         {
             go_rusure.gameObject.SetActive(true); 
             resettinSelfDestruct = false;
-        }, 0.6f);
+        }, UnityEngine.Random.Range(0.5f, 2f));
 
     }
 

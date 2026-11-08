@@ -7,6 +7,7 @@ using ProSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using static AudioManager;
 
 public class FloorManager : Singleton<FloorManager>
 {
@@ -40,6 +41,7 @@ public class FloorManager : Singleton<FloorManager>
     [Required] public DetectorMouseClick nameTagDetector;
     [Required] public WriteName writeName;
     [Required] public GameObject trigger_exitElevator;
+    public List<Door> doors = new();
     
     public bool HasAlreadyUsedName(string internName) => internData.Any(d => d.internName == internName);
 
@@ -82,7 +84,17 @@ public class FloorManager : Singleton<FloorManager>
     [Required] public Animator elevatorDoorAnimator;
     [Required] public PlayerController playerController;
 
-    private void Start() => StartLevel();
+    private void Start()
+    {
+        StartLevel();
+        
+        var source = UseSourceWithClip(SourceTrack.Long1,
+            AudioClipType.BgMusic1, out var clip);
+        source.clip = clip;
+        source.loop = true;
+        source.Play();
+        source.volume = 0.09f;
+    }
 
     [Button]
     public void StartLevel()
@@ -96,18 +108,23 @@ public class FloorManager : Singleton<FloorManager>
         floorState = FloorStates.CreatedNameComplete;
         elevatorDoorAnimator.Play("Open");
         internData[currentIntern].internName = internName;
+        UseSourceWithClip(SourceTrack.Player,
+            AudioClipType.ElevatorOpen, out var clip).PlayOneShot(clip);
     }
     
     [Button]
     public void E_ExitElevator()
     {
         elevatorDoorAnimator.Play("Close");
+        UseSourceWithClip(SourceTrack.Player,
+            AudioClipType.ElevatorOpen, out var clip).PlayOneShot(clip);
     }
     
     [Button]
     public void ResetDeath()
     {
-        elevatorDoorAnimator.Play("Close");
+
+        elevatorDoorAnimator.Play("Close", 0, 1f);
         playerController.go_blackScreenDie.gameObject.SetActive(false);
         UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
         StartLevel();
@@ -130,9 +147,20 @@ public class FloorManager : Singleton<FloorManager>
             startPos.position,
             startPos.rotation
         );
+        
         cc.enabled = true;
 
         Debug.Log("Reset death");
+        
+        CoroutineRunner.Instance.RunMethodDelayed(() =>
+        {
+            UseSourceWithClip(SourceTrack.Player,
+                AudioClipType.ElevatorDing, out var clip).PlayOneShot(clip);
+            doors.ForEach(d =>
+            {
+                d.Get<DetectorTrigger>().ManualExit();
+            });
+        }, 0.5f);
         
         if (currentIntern == 1)
         {
@@ -146,6 +174,8 @@ public class FloorManager : Singleton<FloorManager>
         {
             CoroutineRunner.Instance.RunMethodDelayed(() => CompleteCurrentTask(), 3f);
         }
+        
+        
         
 
     }

@@ -32,8 +32,12 @@ public class CRT : MonoBehaviour
 
         currentPostItDeath++;
         if (currentPostItDeath < postItDeaths.Count)
+        {
             for(int i = 0; i < currentPostItDeath; i++)
                 postItDeaths[i].SetActive(true);
+        }
+        else foreach (var t in postItDeaths)
+                t.SetActive(true);
         
         allScreens.ForEach(s => s.SetActive(false));
         go_homeScreen.gameObject.SetActive(true);

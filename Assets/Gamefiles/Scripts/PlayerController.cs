@@ -5,10 +5,12 @@
  using UnityEngine;
 using EMILtools.Extensions;
 using Sirenix.OdinInspector;
+using static AudioManager;
 using static UnityEngine.CursorLockMode;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool cantUsePhone = false;
     public bool moveLocked, lookLocked, stopInputReading;
     public float speed;
     public MouseLookEX.MouseLookSettings mouseLookSettings;
@@ -18,7 +20,10 @@ public class PlayerController : MonoBehaviour
     public string defaultAnimName = "Default";
     [Required]  public Animator phoneAnimator;
     public string usePhoneAnimName = "Use";
-
+    
+    [Header("Footsteps")]
+    public float footstepInterval = 0.4f;
+    private float footstepTimer;
 
     public KeyCode phoneKey;
 
@@ -29,12 +34,17 @@ public class PlayerController : MonoBehaviour
     
     void Awake() => CursorEX.Set(false, Locked);
 
+    public void SetStopInputReading(bool v) => stopInputReading = v;
+
     [Button]
     public void Die()
     {
         moveLocked = true;
         lookLocked = true;
         stopInputReading = true;
+        Source(SourceTrack.Long2).Stop();
+        Source(SourceTrack.Footsteps).Stop();
+        Source(SourceTrack.Long1).Stop();
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {
             go_blackScreenDie.SetActive(true);
@@ -61,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(phoneKey))
+        if (Input.GetKeyDown(phoneKey) && !cantUsePhone)
         {
             phoneAnimator.gameObject.SetActive(true);
             if (UIManager.Instance.currentDisplay == UIManager.FloorDisplays.HUD)
@@ -88,6 +98,7 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         if(moveLocked) return;
+        
         var yInputScalar = Input.GetAxis("Vertical");
         var xInputScalar = Input.GetAxis("Horizontal");
         var fwd = camTransform.forward * yInputScalar;
@@ -96,5 +107,19 @@ public class PlayerController : MonoBehaviour
         moveDir.y = 0;
         charController.Move(moveDir * speed * Time.deltaTime);
         //transform.Translate(moveDir * speed * Time.deltaTime);
+
+        var source = UseSourceWithClip(SourceTrack.Footsteps, AudioClipType.FootSteps1, out var clip);
+        // Continuous footsteps
+        if (moveDir.sqrMagnitude > 0.01f)
+        {
+            if (source.isPlaying) return;
+            source.loop = true;
+            source.clip = clip;
+            source.volume = 0.2f;
+            source.pitch = 1.2f;
+            source.Play();
+        }
+        else
+            source.Stop();
     }
 }

@@ -11,7 +11,7 @@ using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 
-public class Loader : PersistantReplacerSingleton<Loader>
+public class Loader : Singleton<Loader>
 {
     [SerializeField] float minTimeLoading = 1f;
     [SerializeField] public FadeSettings loadingFade;

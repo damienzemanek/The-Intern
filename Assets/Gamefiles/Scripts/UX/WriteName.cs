@@ -4,6 +4,7 @@ using EMILtools.Extensions;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using static AudioManager;
 using static UIManager;
 
 public class WriteName : MonoBehaviour
@@ -27,6 +28,7 @@ public class WriteName : MonoBehaviour
         interactable = false;
         OnCompleteUITransition.Invoke();
         Debug.Log("Showing INteract");
+
     }
     
     public void OnWriteNameComplete()
@@ -42,6 +44,8 @@ public class WriteName : MonoBehaviour
         FloorManager.Instance.playerController.moveLocked = false;
         Singleton<UIManager>.Instance.Display(FloorDisplays.HUD);
         CursorEX.Set(false, CursorLockMode.Locked);
+        UseSourceWithClip(SourceTrack.Player, AudioClipType.Nametag,
+            out var clip).PlayOneShot(clip);
     }
 
     public void AlreadyUsedName()

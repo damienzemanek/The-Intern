@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Gamefiles/Scenes/TestScene 1PREFABs.unity
     guid: 8184d745672851a40816f87be9a07682
+  - enabled: 1
+    path: Assets/Gamefiles/Scenes/EndScene.unity
+    guid: 11f602e2b8654b7438aed7abc64840bb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
