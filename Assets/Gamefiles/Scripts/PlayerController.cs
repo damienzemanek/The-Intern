@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode phoneKey;
 
     [Required] public GameObject go_blackScreenDie;
+    [Required] public GameObject pr_skeletonCorpse;
 
     public float deathFrameTime = 0.5f;
     
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {
             go_blackScreenDie.SetActive(true);
+            Instantiate(pr_skeletonCorpse, camTransform);
             CoroutineRunner.Instance.RunMethodDelayed(() =>
             {
                 UIManager.Instance.Display(UIManager.FloorDisplays.DeathCRT);
