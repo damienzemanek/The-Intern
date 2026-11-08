@@ -7,6 +7,7 @@ using ProSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using static AudioManager;
 
 public class FloorManager : Singleton<FloorManager>
 {
@@ -83,7 +84,17 @@ public class FloorManager : Singleton<FloorManager>
     [Required] public Animator elevatorDoorAnimator;
     [Required] public PlayerController playerController;
 
-    private void Start() => StartLevel();
+    private void Start()
+    {
+        StartLevel();
+        
+        var source = UseSourceWithClip(SourceTrack.Long1,
+            AudioClipType.BgMusic1, out var clip);
+        source.clip = clip;
+        source.loop = true;
+        source.Play();
+        source.volume = 0.09f;
+    }
 
     [Button]
     public void StartLevel()
@@ -97,12 +108,16 @@ public class FloorManager : Singleton<FloorManager>
         floorState = FloorStates.CreatedNameComplete;
         elevatorDoorAnimator.Play("Open");
         internData[currentIntern].internName = internName;
+        UseSourceWithClip(SourceTrack.Player,
+            AudioClipType.ElevatorOpen, out var clip).PlayOneShot(clip);
     }
     
     [Button]
     public void E_ExitElevator()
     {
         elevatorDoorAnimator.Play("Close");
+        UseSourceWithClip(SourceTrack.Player,
+            AudioClipType.ElevatorOpen, out var clip).PlayOneShot(clip);
     }
     
     [Button]
@@ -139,6 +154,8 @@ public class FloorManager : Singleton<FloorManager>
         
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {
+            UseSourceWithClip(SourceTrack.Player,
+                AudioClipType.ElevatorDing, out var clip).PlayOneShot(clip);
             doors.ForEach(d =>
             {
                 d.Get<DetectorTrigger>().ManualExit();
@@ -157,6 +174,8 @@ public class FloorManager : Singleton<FloorManager>
         {
             CoroutineRunner.Instance.RunMethodDelayed(() => CompleteCurrentTask(), 3f);
         }
+        
+        
         
 
     }

@@ -11,17 +11,32 @@ public class AudioManager : Singleton<AudioManager>
         Player,
         Long1,
         Long2,
+        Footsteps
     }
     
     public enum AudioClipType
     {
         PhoneBuzz,
+        FootSteps1,
+        FootSteps2,
+        CoffeMachineButton,
+        PourCoffee,
+        CoffeeOcean,
+        BgMusic1,
+        ElevatorDing,
+        ElevatorOpen,
+        Explosion,
+        Printer,
+        SelfDestructAlarm,
+        MouseClick,
+        Nametag,
     }
 
 
     [Required] public AudioSource longAudioSource1;
     [Required] public AudioSource longAudioSource2;
     [Required] public AudioSource playerAudioSource;
+    [Required] public AudioSource footstepsAudioSource;
     
     public SerializedDictionary<AudioClipType, AudioClip> audioClips = new();
 
@@ -33,6 +48,19 @@ public class AudioManager : Singleton<AudioManager>
             audioClips.TryAdd(clipType, null);
     }
 
+    public static AudioSource Source(SourceTrack sourceTrack)
+    {
+        switch (sourceTrack)
+        {
+            case SourceTrack.Player: return Instance.playerAudioSource;
+            case SourceTrack.Long1: return Instance.longAudioSource1;
+            case SourceTrack.Long2: return Instance.longAudioSource2;
+            case SourceTrack.Footsteps: return Instance.footstepsAudioSource;
+            default: Debug.LogError("Unspported Source Track Type"); break;
+        }
+        return null;
+    }
+
     public static AudioSource UseSourceWithClip(SourceTrack track, AudioClipType clipType, out AudioClip clip)
     {
         clip = Instance.audioClips[clipType];
@@ -42,6 +70,7 @@ public class AudioManager : Singleton<AudioManager>
             case SourceTrack.Player: return Instance.playerAudioSource;
             case SourceTrack.Long1: return Instance.longAudioSource1;
             case SourceTrack.Long2: return Instance.longAudioSource2;
+            case SourceTrack.Footsteps: return Instance.footstepsAudioSource;
             default: Debug.LogError("Unspported Source Track Type"); break;
         }
 
