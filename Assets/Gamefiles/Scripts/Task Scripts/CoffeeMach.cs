@@ -18,6 +18,7 @@ public class CoffeeMach : MonoBehaviour
     public float drownScreenTime = 5f;
     public float drowningTime = 10f;
 
+    [Required] public Door door;
     [Required] public GameObject go_GrabFilledMug;
     [Required] public GameObject drownScreen;
     
@@ -43,6 +44,7 @@ public class CoffeeMach : MonoBehaviour
 
     public IEnumerator C_DrownEvent()
     {
+        door.locked = true;
         bool filled = false;
         coffeeMachAnimator.PlayOnEnd(coffeeMugStartFillingAnimName, () => filled = true);
         yield return new WaitUntil(() => filled);
@@ -59,5 +61,6 @@ public class CoffeeMach : MonoBehaviour
         yield return new WaitForSeconds(1f);
         running = false;
         hasDrowned = true;
+        door.locked = false;
     }
 }
