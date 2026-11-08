@@ -3213,7 +3213,6 @@ GameObject:
   - component: {fileID: 4018654958150350035}
   - component: {fileID: 9020296033222148000}
   - component: {fileID: 6704372940415445061}
-  - component: {fileID: 2147854393166104348}
   - component: {fileID: 8717859961104289225}
   m_Layer: 0
   m_Name: Player
@@ -3304,70 +3303,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2147854393166104348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4338692866588804422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281863a511ce13d4ba072ae5270307c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemHolder
-  items:
-    _serializedList:
-    - Key: 1
-      Value:
-        itemType: 1
-        progressCompleted: 0
-        currentItemProgress: 0
-        maxItemProgress: 1
-        go_itemObj: {fileID: 4706478046238027304}
-        onItemProgressComplete:
-          m_PersistentCalls:
-            m_Calls: []
-    - Key: 2
-      Value:
-        itemType: 2
-        progressCompleted: 0
-        currentItemProgress: 0
-        maxItemProgress: 1
-        go_itemObj: {fileID: 1829189470331621905}
-        onItemProgressComplete:
-          m_PersistentCalls:
-            m_Calls: []
-    - Key: 3
-      Value:
-        itemType: 3
-        progressCompleted: 0
-        currentItemProgress: 0
-        maxItemProgress: 1
-        go_itemObj: {fileID: 6646118824257944200}
-        onItemProgressComplete:
-          m_PersistentCalls:
-            m_Calls: []
-    - Key: 4
-      Value:
-        itemType: 4
-        progressCompleted: 0
-        currentItemProgress: 0
-        maxItemProgress: 1
-        go_itemObj: {fileID: 8620243174755451811}
-        onItemProgressComplete:
-          m_PersistentCalls:
-            m_Calls: []
-    - Key: 5
-      Value:
-        itemType: 5
-        progressCompleted: 0
-        currentItemProgress: 0
-        maxItemProgress: 1
-        go_itemObj: {fileID: 2471989374220137574}
-        onItemProgressComplete:
-          m_PersistentCalls:
-            m_Calls: []
 --- !u!54 &8717859961104289225
 Rigidbody:
   m_ObjectHideFlags: 0
