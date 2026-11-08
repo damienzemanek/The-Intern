@@ -7,7 +7,6 @@ using static AudioManager;
 
 public class SlackManager : Singleton<SlackManager>
 {
-    [Required] public GameObject go_slackAppNotificationIcon;
     [Required] public RectTransform slackRect;
     [Required] public Sprite bossPic;
     [Required] public GameObject pr_slackMessage;
@@ -21,7 +20,7 @@ public class SlackManager : Singleton<SlackManager>
     public void OpenSlack()
     {
         slackRect.RefreshLayoutGroupsImmediateAndRecursive();
-        go_slackAppNotificationIcon.gameObject.SetActive(false);
+        phone.RemoveNotification();
     }
 
     public void SendSlackMsg(string msg)
@@ -29,7 +28,6 @@ public class SlackManager : Singleton<SlackManager>
         var newMsg = Instantiate(pr_slackMessage, parent_messageParent);
         newMsg.Get<SlackMsg>().InitMessage(msg, bossPic);
         slackRect.RefreshLayoutGroupsImmediateAndRecursive();
-        go_slackAppNotificationIcon.gameObject.SetActive(true);
         phone.NewNotification();
     }
     

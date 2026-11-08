@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             phoneAnimator.gameObject.SetActive(true);
             if (UIManager.Instance.currentDisplay == UIManager.FloorDisplays.HUD)
             {
-                phoneAnimator.PlayOnEnd(usePhoneAnimName, () =>
+                phoneAnimator.CrossFadeOnEnd(usePhoneAnimName, 0.2f, () =>
                 {
                     UIManager.Instance.Display(UIManager.FloorDisplays.Phone);
                 });
