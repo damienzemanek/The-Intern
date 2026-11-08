@@ -857,78 +857,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51f5940103d577a42a1736f82485539b, type: 3}
---- !u!1 &797004862
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 797004864}
-  - component: {fileID: 797004863}
-  - component: {fileID: 797004865}
-  m_Layer: 0
-  m_Name: Loader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &797004863
+--- !u!114 &797004865 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3547103619293150608, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+  m_PrefabInstance: {fileID: 6604622029614480360}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797004862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f65a1cfa7df67a4f9bbd91af2d4f3fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: EMILtools::Loader
-  autoUnparentOnAwake: 1
-  minTimeLoading: 1
-  loadingFade:
-    totalDurationForFade: 1
-    amountOfSteps: 100
-    delayToStartFading: 0
-  loadScreenIndx: 1
-  scenesToLoad:
-  - name: Menu
-    values: 00000000
-  - name: Game
-    values: 02000000
-  LoadingScreenObjects: []
-  disables: []
---- !u!4 &797004864
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797004862}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 207.81973, y: 228.70561, z: -44.35685}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &797004865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797004862}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91f3110edd80fad419abfe030d904e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EMILtools::LoadSceneConnector
-  fadeTarget: {fileID: 980420952}
 --- !u!1 &898730239
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,6 +3006,67 @@ LightProbeGroup:
   - {x: -1, y: -1, z: 1}
   - {x: -1, y: -1, z: -1}
   m_Dering: 1
+--- !u!1001 &6604622029614480360
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1606648186923825339, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_Name
+      value: Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 3547103619293150608, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: fadeTarget
+      value: 
+      objectReference: {fileID: 980420952}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 207.81973
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 228.70561
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44.35685
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280664950984902080, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b5eb5d1be2773fc419312669a9db7680, type: 3}
 --- !u!1 &6613731742993463428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,7 +3137,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1452247843}
   - {fileID: 1002527820}
-  - {fileID: 797004864}
+  - {fileID: 6604622029614480360}
   - {fileID: 1398729396}
   - {fileID: 1541089037}
   - {fileID: 1139802121}

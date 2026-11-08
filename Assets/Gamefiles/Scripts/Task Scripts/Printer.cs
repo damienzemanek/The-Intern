@@ -159,7 +159,7 @@ public class Printer : MonoBehaviour
         {
             go_rusure.gameObject.SetActive(true); 
             resettinSelfDestruct = false;
-        }, 0.6f);
+        }, UnityEngine.Random.Range(0.5f, 2f));
 
     }
 

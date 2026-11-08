@@ -59,10 +59,10 @@ public class IntroSeq : MonoBehaviour
              signedDoc = false;
              newDoc.transform.DOMove(tweenOffScreenPos.position, tweenTime);
          }
-         var lastDoc = Instantiate(pr_lastDoc, tweenFrontPos.position, Quaternion.identity);
+         var lastDoc = Instantiate(pr_lastDoc, t_documentSpawnPt.position, Quaternion.identity);
          allDocs.Add(lastDoc);
          lastDoc.transform.SetParent(null);
-         lastDoc.transform.DOMove(tweenOffScreenPos.position, tweenTime);
+         lastDoc.transform.DOMove(tweenFrontPos.position, tweenTime);
          yield return new WaitUntil(() => signedDoc);
          signedDoc = false;
          lastDoc.transform.DOMove(tweenOffScreenPos.position, tweenTime);

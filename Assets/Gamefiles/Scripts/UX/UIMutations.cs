@@ -12,6 +12,7 @@ public class UIMutations : MonoBehaviour
     }
     public void StartPlayerInput()
     {
+        if (!FloorManager.HasInstance) return;
         FloorManager.Instance.playerController.stopInputReading = false;
         CursorEX.Set(false, CursorLockMode.Locked );
     }

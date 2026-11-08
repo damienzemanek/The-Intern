@@ -40,6 +40,7 @@ public class FloorManager : Singleton<FloorManager>
     [Required] public DetectorMouseClick nameTagDetector;
     [Required] public WriteName writeName;
     [Required] public GameObject trigger_exitElevator;
+    public List<Door> doors = new();
     
     public bool HasAlreadyUsedName(string internName) => internData.Any(d => d.internName == internName);
 
@@ -107,7 +108,8 @@ public class FloorManager : Singleton<FloorManager>
     [Button]
     public void ResetDeath()
     {
-        elevatorDoorAnimator.Play("Close");
+
+        elevatorDoorAnimator.Play("Close", 0, 1f);
         playerController.go_blackScreenDie.gameObject.SetActive(false);
         UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
         StartLevel();
@@ -130,9 +132,18 @@ public class FloorManager : Singleton<FloorManager>
             startPos.position,
             startPos.rotation
         );
+        
         cc.enabled = true;
 
         Debug.Log("Reset death");
+        
+        CoroutineRunner.Instance.RunMethodDelayed(() =>
+        {
+            doors.ForEach(d =>
+            {
+                d.Get<DetectorTrigger>().ManualExit();
+            });
+        }, 0.5f);
         
         if (currentIntern == 1)
         {

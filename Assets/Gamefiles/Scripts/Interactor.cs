@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
+    public float dist = 5f;
     [Required] public GameObject go_xhair;
     [Required] public GameObject go_Int;
     
@@ -14,7 +15,7 @@ public class Interactor : MonoBehaviour
         go_xhair.gameObject.SetActive(true);
         go_Int.SetActive(false);
         if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit,
-                10)) return;
+                dist)) return;
         if (!hit.collider.gameObject.CompareTag("INT")) return;
         go_Int.SetActive(true);
         go_xhair.gameObject.SetActive(false);

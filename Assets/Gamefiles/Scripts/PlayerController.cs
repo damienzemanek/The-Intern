@@ -9,6 +9,7 @@ using static UnityEngine.CursorLockMode;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool cantUsePhone = false;
     public bool moveLocked, lookLocked, stopInputReading;
     public float speed;
     public MouseLookEX.MouseLookSettings mouseLookSettings;
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public float deathFrameTime = 0.5f;
     
     void Awake() => CursorEX.Set(false, Locked);
+
+    public void SetStopInputReading(bool v) => stopInputReading = v;
 
     [Button]
     public void Die()
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(phoneKey))
+        if (Input.GetKeyDown(phoneKey) && !cantUsePhone)
         {
             phoneAnimator.gameObject.SetActive(true);
             if (UIManager.Instance.currentDisplay == UIManager.FloorDisplays.HUD)
