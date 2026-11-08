@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DesignPatterns.CreationalPatterns;
 using ProSM;
 using Sirenix.OdinInspector;
@@ -18,12 +19,18 @@ public class FloorManager : Singleton<FloorManager>
         public UnityEvent onCompleteTask;
     }
 
+    [Serializable]
+    public class InternData
+    {
+        [ReadOnly] public string internName;
+        public string deathReason;
+        public Sprite spr_deathStickyNote;
+    }
+
     
     
-    public int deaths;
-    
-    [BoxGroup("Name Data")] public string internName;
-    [BoxGroup("Name Data")] public List<string> usedNames = new();
+    public int currentIntern;
+    [BoxGroup("Name Data")] public List<InternData> internData = new();
     
     [BoxGroup("Tasks")] public List<TaskData> tasks = new();
     [BoxGroup("Tasks")] public int currentTask = 0;
@@ -33,11 +40,12 @@ public class FloorManager : Singleton<FloorManager>
     [Required] public WriteName writeName;
     [Required] public GameObject trigger_exitElevator;
     
-    public bool HasAlreadyUsedName(string internName) => usedNames.Contains(internName);
+    public bool HasAlreadyUsedName(string internName) => internData.Any(d => d.internName == internName);
 
     public void AssignFirstTask()
     {
         if (currentTask != 0) return;
+        currentIntern = 0;
         tasks[0].onStartTask.Invoke();
         tasks[0].isComplete = false;
         tasks[0].go_taskGrouping.SetActive(true);
@@ -86,8 +94,7 @@ public class FloorManager : Singleton<FloorManager>
     {
         floorState = FloorStates.CreatedNameComplete;
         elevatorDoorAnimator.Play("Open");
-        this.internName = internName;
-        usedNames.Add(internName);
+        internData[currentIntern].internName = internName;
     }
     
     [Button]
@@ -100,11 +107,11 @@ public class FloorManager : Singleton<FloorManager>
     public void ResetDeath()
     {
         playerController.go_blackScreenDie.gameObject.SetActive(false);
+        UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
         StartLevel();
         playerController.transform.position = startPos.position;
         playerController.transform.localRotation = Quaternion.Euler(0, -180, 0);
         nameTagDetector.ManualExit();
-        internName = string.Empty;
         StartLevel();
         writeName.interactable = true;
         writeName.ip_txtName.text = "";
@@ -112,6 +119,8 @@ public class FloorManager : Singleton<FloorManager>
         playerController.lookLocked = false;
         playerController.stopInputReading = false;
         trigger_exitElevator.gameObject.SetActive(true);
+        currentIntern++;
+        playerController.transform.position = startPos.position;
         Debug.Log("Reset deeath");
     }
     

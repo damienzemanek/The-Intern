@@ -32,7 +32,15 @@ public class PlayerController : MonoBehaviour
         moveLocked = true;
         lookLocked = true;
         stopInputReading = true;
-        CoroutineRunner.Instance.RunMethodDelayed(() => go_blackScreenDie.SetActive(true), deathFrameTime);
+        CoroutineRunner.Instance.RunMethodDelayed(() =>
+        {
+            go_blackScreenDie.SetActive(true);
+            CoroutineRunner.Instance.RunMethodDelayed(() =>
+            {
+                UIManager.Instance.Display(UIManager.FloorDisplays.DeathCRT);
+                CursorEX.Set(true, None);
+            }, 2f);
+        }, deathFrameTime);
     }
     
     

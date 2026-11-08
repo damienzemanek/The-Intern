@@ -117,7 +117,8 @@ public class Printer : MonoBehaviour
     }
 
     IEnumerator SecondHalfTask()
-    {        
+    {
+        yield return new WaitForSeconds(1f);
         yield return C_Error();
         yield return C_Print(3f);
         disps.ForEach(d => d.SetActive(false));

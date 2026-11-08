@@ -15,7 +15,8 @@ public class UIManager : Singleton<UIManager>
         HUD,
         WriteName,
         Phone,
-        Slack
+        Slack,
+        DeathCRT,
     }
     
     public bool uiTransitioning;
