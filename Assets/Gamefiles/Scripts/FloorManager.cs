@@ -107,6 +107,7 @@ public class FloorManager : Singleton<FloorManager>
     [Button]
     public void ResetDeath()
     {
+        elevatorDoorAnimator.Play("Close");
         playerController.go_blackScreenDie.gameObject.SetActive(false);
         UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
         StartLevel();
@@ -140,6 +141,12 @@ public class FloorManager : Singleton<FloorManager>
                 SlackManager.Instance.SendSlackMsg(SlackManager.Instance.firstDeathSlackMsg);
             }, 1.4f);
         }
+
+        if (currentIntern == 3)
+        {
+            CoroutineRunner.Instance.RunMethodDelayed(() => CompleteCurrentTask(), 3f);
+        }
+        
 
     }
     

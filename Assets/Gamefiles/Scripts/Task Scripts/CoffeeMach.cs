@@ -63,5 +63,6 @@ public class CoffeeMach : MonoBehaviour
         running = false;
         hasDrowned = true;
         door.locked = false;
+        go_coffeMugObj.gameObject.SetActive(false);
     }
 }

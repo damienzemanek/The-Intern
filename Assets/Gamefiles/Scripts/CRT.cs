@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class CRT : MonoBehaviour
 {
+    public int currentPostItDeath = 0;
+    public List<GameObject> postItDeaths = new();
+    
     [Required] public GameObject go_EmailNotifAlert;
     [Required] public GameObject go_homeScreen;
     [Required] public GameObject go_emailListScreen;
@@ -13,7 +16,7 @@ public class CRT : MonoBehaviour
     [Required] public GameObject go_msgSent;
     [Required] public TextMeshProUGUI txt_deathReason;
     public List<GameObject> allScreens = new();
-
+ 
     private void Awake()
     {
         allScreens.Add(go_homeScreen);
@@ -25,6 +28,13 @@ public class CRT : MonoBehaviour
 
     private void OnEnable()
     {
+        foreach (var t in postItDeaths) t.SetActive(false);
+
+        currentPostItDeath++;
+        if (currentPostItDeath < postItDeaths.Count)
+            for(int i = 0; i < currentPostItDeath; i++)
+                postItDeaths[i].SetActive(true);
+        
         allScreens.ForEach(s => s.SetActive(false));
         go_homeScreen.gameObject.SetActive(true);
         CoroutineRunner.Instance.RunMethodDelayed(() => go_EmailNotifAlert.SetActive(false), 2f);

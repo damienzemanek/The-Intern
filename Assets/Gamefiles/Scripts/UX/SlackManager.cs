@@ -17,6 +17,7 @@ public class SlackManager : Singleton<SlackManager>
         "Hey new Intern! So we had some trouble with our last intern... something about a printer. So you're going to take his place!" +
         "I need you to finish what they started. Thanks!";
     
+    
     public void OpenSlack()
     {
         slackRect.RefreshLayoutGroupsImmediateAndRecursive();

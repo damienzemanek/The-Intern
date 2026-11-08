@@ -112,7 +112,7 @@ public class Printer : MonoBehaviour
         
         vfx_expl.Play();
         FloorManager.Instance.playerController.Die();
-
+        go_placerPaper.gameObject.SetActive(false);
         StartCoroutine(SecondHalfTask());
     }
 
@@ -125,7 +125,6 @@ public class Printer : MonoBehaviour
         go_complete.SetActive(true);
         go_printedPaper.gameObject.SetActive(true);
         go_placerPaper.gameObject.SetActive(false);
-        
     }
 
     IEnumerator C_Print()
@@ -149,10 +148,19 @@ public class Printer : MonoBehaviour
     }
 
     private bool rUSuring = false;
+
+    public bool resettinSelfDestruct = false;
     public void AttemptResetSelfDestruct()
     {
-        go_rusure.gameObject.SetActive(true); 
+        if (resettinSelfDestruct) return;
+        resettinSelfDestruct = true;
         selfDestResetBtn.gameObject.SetActive(false);
+        CoroutineRunner.Instance.RunMethodDelayed(() =>
+        {
+            go_rusure.gameObject.SetActive(true); 
+            resettinSelfDestruct = false;
+        }, 0.6f);
+
     }
 
     public void AttemptClearRUSure()
