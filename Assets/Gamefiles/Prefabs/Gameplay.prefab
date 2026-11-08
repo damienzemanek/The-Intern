@@ -5660,7 +5660,7 @@ MonoBehaviour:
         progressCompleted: 0
         currentItemProgress: 0
         maxItemProgress: 1
-        go_itemObj: {fileID: 0}
+        go_itemObj: {fileID: 8079576285672086907}
         onItemProgressComplete:
           m_PersistentCalls:
             m_Calls: []
@@ -5670,7 +5670,7 @@ MonoBehaviour:
         progressCompleted: 0
         currentItemProgress: 0
         maxItemProgress: 1
-        go_itemObj: {fileID: 0}
+        go_itemObj: {fileID: 2887433165462757698}
         onItemProgressComplete:
           m_PersistentCalls:
             m_Calls: []
@@ -5680,7 +5680,7 @@ MonoBehaviour:
         progressCompleted: 0
         currentItemProgress: 0
         maxItemProgress: 1
-        go_itemObj: {fileID: 0}
+        go_itemObj: {fileID: 7875510214982158811}
         onItemProgressComplete:
           m_PersistentCalls:
             m_Calls: []
@@ -5690,7 +5690,7 @@ MonoBehaviour:
         progressCompleted: 0
         currentItemProgress: 0
         maxItemProgress: 1
-        go_itemObj: {fileID: 0}
+        go_itemObj: {fileID: 5103122039181308144}
         onItemProgressComplete:
           m_PersistentCalls:
             m_Calls: []
@@ -5700,7 +5700,7 @@ MonoBehaviour:
         progressCompleted: 0
         currentItemProgress: 0
         maxItemProgress: 1
-        go_itemObj: {fileID: 0}
+        go_itemObj: {fileID: 1386803256297572149}
         onItemProgressComplete:
           m_PersistentCalls:
             m_Calls: []
@@ -61434,7 +61434,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5979061517084885012}
         m_TargetAssemblyTypeName: WriteName, Assembly-CSharp
-        m_MethodName: OnWriteNameComplete
+        m_MethodName: InteractWithNameTag
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -115447,6 +115447,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4018654958150350035, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
   m_PrefabInstance: {fileID: 3562539770554266451}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1386803256297572149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2471989374220137574, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+  m_PrefabInstance: {fileID: 3562539770554266451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1688178015541264193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2746408514449787922, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
@@ -115467,6 +115472,16 @@ MonoBehaviour:
   go_PickDiffName: {fileID: 6178162641459889953}
   ip_txtName: {fileID: 212243250905347071}
   interactable: 1
+--- !u!1 &2887433165462757698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1829189470331621905, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+  m_PrefabInstance: {fileID: 3562539770554266451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5103122039181308144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8620243174755451811, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+  m_PrefabInstance: {fileID: 3562539770554266451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5502880292953951475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9020296033222148000, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
@@ -115481,5 +115496,15 @@ MonoBehaviour:
 --- !u!1 &6178162641459889953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7263621459742356594, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+  m_PrefabInstance: {fileID: 3562539770554266451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7875510214982158811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6646118824257944200, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+  m_PrefabInstance: {fileID: 3562539770554266451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8079576285672086907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4706478046238027304, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
   m_PrefabInstance: {fileID: 3562539770554266451}
   m_PrefabAsset: {fileID: 0}
