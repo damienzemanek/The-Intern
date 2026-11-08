@@ -35,8 +35,13 @@ public class Printer : MonoBehaviour
     [Required]  public GameObject go_errorDisp;
     [Required]  public GameObject go_selfDestructDisp;
     [Required]  public GameObject go_rusure;
+    [Required] public GameObject go_complete;
     [Required]  public GameObject selfDestResetBtn;
 
+    [Required] public GameObject go_printedPaper;
+    [Required] public Transform outcomeLoc;
+
+    
     [Required]  public GameObject go_startPrintBtn;
     [Required] public TextMeshPro txt_selfDestruct;
     [Required] public ParticleSystem vfx_expl;
@@ -50,6 +55,7 @@ public class Printer : MonoBehaviour
         disps.Add(go_errorDisp);
         disps.Add(go_selfDestructDisp);
         disps.Add(go_rusure);
+        disps.Add(go_complete);
         go_startPrintBtn.gameObject.SetActive(false);
         foreach (var disp in disps) disp.SetActive(false);
         selfDestResetBtn.gameObject.SetActive(false);
@@ -105,6 +111,17 @@ public class Printer : MonoBehaviour
         
         vfx_expl.Play();
         FloorManager.Instance.playerController.Die();
+
+        StartCoroutine(SecondHalfTask());
+    }
+
+    IEnumerator SecondHalfTask()
+    {        
+        yield return C_Error();
+        yield return C_Print(3f);
+        disps.ForEach(d => d.SetActive(false));
+        go_complete.SetActive(true);
+        go_printedPaper.gameObject.SetActive(true);
     }
 
     IEnumerator C_Print()

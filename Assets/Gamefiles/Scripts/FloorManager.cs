@@ -31,6 +31,7 @@ public class FloorManager : Singleton<FloorManager>
     [Required] public Transform startPos;
     [Required] public DetectorMouseClick nameTagDetector;
     [Required] public WriteName writeName;
+    [Required] public GameObject trigger_exitElevator;
     
     public bool HasAlreadyUsedName(string internName) => usedNames.Contains(internName);
 
@@ -109,6 +110,7 @@ public class FloorManager : Singleton<FloorManager>
         playerController.moveLocked = false;
         playerController.lookLocked = false;
         playerController.stopInputReading = false;
+        trigger_exitElevator.gameObject.SetActive(true);
     }
     
     
