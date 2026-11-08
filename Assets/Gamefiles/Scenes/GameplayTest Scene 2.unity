@@ -198,6 +198,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1727345670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4903911237813334646, guid: dd0218d81303a4a47bddfd5c905e9177, type: 3}
+  m_PrefabInstance: {fileID: 2032093003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2032093003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,6 +211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 174209769494891354, guid: dd0218d81303a4a47bddfd5c905e9177, type: 3}
+      propertyPath: drownScreen
+      value: 
+      objectReference: {fileID: 1727345670}
     - target: {fileID: 212243250905347071, guid: dd0218d81303a4a47bddfd5c905e9177, type: 3}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
