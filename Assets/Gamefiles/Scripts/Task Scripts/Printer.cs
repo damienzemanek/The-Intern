@@ -41,7 +41,8 @@ public class Printer : MonoBehaviour
     [Required] public GameObject go_printedPaper;
     [Required] public Transform outcomeLoc;
 
-    
+
+    [Required]  public GameObject go_placerPaper;
     [Required]  public GameObject go_startPrintBtn;
     [Required] public TextMeshPro txt_selfDestruct;
     [Required] public ParticleSystem vfx_expl;
@@ -122,6 +123,8 @@ public class Printer : MonoBehaviour
         disps.ForEach(d => d.SetActive(false));
         go_complete.SetActive(true);
         go_printedPaper.gameObject.SetActive(true);
+        go_placerPaper.gameObject.SetActive(false);
+        
     }
 
     IEnumerator C_Print()

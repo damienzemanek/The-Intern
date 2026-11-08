@@ -107,10 +107,12 @@ public class FloorManager : Singleton<FloorManager>
         internName = string.Empty;
         StartLevel();
         writeName.interactable = true;
+        writeName.ip_txtName.text = "";
         playerController.moveLocked = false;
         playerController.lookLocked = false;
         playerController.stopInputReading = false;
         trigger_exitElevator.gameObject.SetActive(true);
+        Debug.Log("Reset deeath");
     }
     
     
