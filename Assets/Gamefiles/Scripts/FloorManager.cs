@@ -122,7 +122,7 @@ public class FloorManager : Singleton<FloorManager>
         trigger_exitElevator.gameObject.SetActive(true);
 
         currentIntern++;
-
+        
         CharacterController cc = playerController.Get<CharacterController>();
         cc.enabled = false;
         playerController.transform.SetPositionAndRotation(
@@ -132,6 +132,15 @@ public class FloorManager : Singleton<FloorManager>
         cc.enabled = true;
 
         Debug.Log("Reset death");
+        
+        if (currentIntern == 1)
+        {
+            CoroutineRunner.Instance.RunMethodDelayed(() =>
+            {
+                SlackManager.Instance.SendSlackMsg(SlackManager.Instance.firstDeathSlackMsg);
+            }, 1.4f);
+        }
+
     }
     
     

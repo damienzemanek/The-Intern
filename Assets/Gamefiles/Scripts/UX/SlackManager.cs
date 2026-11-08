@@ -13,6 +13,10 @@ public class SlackManager : Singleton<SlackManager>
     [Required] public GameObject pr_slackMessage;
     [Required] public Transform parent_messageParent;
     [Required] public Phone phone;
+
+    public string firstDeathSlackMsg =
+        "Hey new Intern! So we had some trouble with our last intern... something about a printer. So you're going to take his place!" +
+        "I need you to finish what they started. Thanks!";
     
     public void OpenSlack()
     {

@@ -5607,7 +5607,7 @@ MonoBehaviour:
   forcePosition: {fileID: 1854900169}
   headRotation: {x: 24, y: 0, z: 0}
   askTime: 3
-  shootTime: 7
+  shootTime: 6.9
   askMsg: Hey Clarence, Is your coffee good?
   clarenceResponse: 'Clarence: ...'
 --- !u!1001 &718329723
@@ -7844,7 +7844,7 @@ Transform:
   m_GameObject: {fileID: 964711187}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.38, y: -2.39, z: 4.14}
+  m_LocalPosition: {x: 0.06, y: -2.39, z: 4.14}
   m_LocalScale: {x: 1.5, y: 2.75, z: 0.28081995}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12040,7 +12040,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 25d08d9ec52ff8945a6dd71498fd01f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14999,8 +14999,8 @@ Transform:
   m_GameObject: {fileID: 2120344420}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.74928, y: -2.51, z: -4.73}
-  m_LocalScale: {x: 7.228262, y: 2.3328, z: 1.6403393}
+  m_LocalPosition: {x: -2.74928, y: -2.51, z: -4.99}
+  m_LocalScale: {x: 7.228262, y: 2.3328, z: 2.083559}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 964959286}
@@ -16659,6 +16659,12 @@ PrefabInstance:
     - target: {fileID: 4517202126965064792, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832380462790801832, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: firstDeathSlackMsg
+      value: Hey new Intern! So we had some trouble with our last intern... something
+        about a printer. So you're going to take their place!I need you to finish
+        what they started. Thanks!
       objectReference: {fileID: 0}
     - target: {fileID: 6462679165537324719, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
       propertyPath: m_SizeDelta.y

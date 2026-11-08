@@ -41,7 +41,11 @@ public class UIManager : Singleton<UIManager>
 
     protected override void Awake() => OnCompleteUITransition = CompleteUITransition;
 
-    private void Start() => Display(currentDisplay = defaultDisplay);
+    private void Start()
+    {
+        go_speakAndDesc.gameObject.SetActive(false);
+        Display(currentDisplay = defaultDisplay);
+    }
     
     public void Display(int enumindx) => Display((FloorDisplays)enumindx);
      
