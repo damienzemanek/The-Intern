@@ -29,8 +29,8 @@ public class FloorManager : Singleton<FloorManager>
         public Sprite spr_deathStickyNote;
     }
 
-    
-    
+
+    public bool endLevel = false;
     public int currentIntern;
     [BoxGroup("Name Data")] public List<InternData> internData = new();
     
@@ -87,9 +87,9 @@ public class FloorManager : Singleton<FloorManager>
     private void Start()
     {
         StartLevel();
-        
-        var source = UseSourceWithClip(SourceTrack.Long1,
-            AudioClipType.BgMusic1, out var clip);
+
+        AudioClipType clipT = endLevel ? AudioClipType.BossAmbience : AudioClipType.BgMusic1;
+        var source = UseSourceWithClip(SourceTrack.Long1, clipT, out var clip);
         source.clip = clip;
         source.loop = true;
         source.Play();

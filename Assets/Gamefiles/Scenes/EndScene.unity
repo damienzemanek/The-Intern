@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab34983e903e2344ca1783a5cf0cbda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorManager
+  endLevel: 1
   currentIntern: 0
   internData:
   - internName: 
@@ -494,6 +495,7 @@ MonoBehaviour:
   nameTagDetector: {fileID: 0}
   writeName: {fileID: 0}
   trigger_exitElevator: {fileID: 0}
+  doors: []
   floorState: 0
   elevatorDoorAnimator: {fileID: 0}
   playerController: {fileID: 964422217}
@@ -690,6 +692,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51f5940103d577a42a1736f82485539b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1736386179}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51f5940103d577a42a1736f82485539b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1736386182}
   m_SourcePrefab: {fileID: 100100000, guid: 51f5940103d577a42a1736f82485539b, type: 3}
 --- !u!114 &797004865 stripped
 MonoBehaviour:
@@ -1740,10 +1745,10 @@ MonoBehaviour:
   OnDetectINSP:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 797004865}
-        m_TargetAssemblyTypeName: LoadSceneConnector, EMILtools
-        m_MethodName: Load
-        m_Mode: 3
+      - m_Target: {fileID: 1736386182}
+        m_TargetAssemblyTypeName: EndDoor, Assembly-CSharp
+        m_MethodName: LeaveFloor
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1755,6 +1760,21 @@ MonoBehaviour:
   OnUndetectINSP:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1736386182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736386173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a3718a8d0a48044a87f61a27a7d432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndDoor
+  loadIndex: 0
+  loadAdap: {fileID: 797004865}
+  leaving: 0
 --- !u!1 &1848684368
 GameObject:
   m_ObjectHideFlags: 0
