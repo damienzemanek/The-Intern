@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using DesignPatterns.CreationalPatterns;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,12 +32,20 @@ public class UIManager : Singleton<UIManager>
         public List<GameObject> objects;
         public UnityEvent onDisplay;
     }
+
+    [Required] public GameObject go_speakAndDesc;
+    [Required] public TextMeshProUGUI txt_speakAndDesc;
+    
     
     public SerializedDictionary<FloorDisplays, UIDisplay> displays;
 
     protected override void Awake() => OnCompleteUITransition = CompleteUITransition;
 
-    private void Start() => Display(currentDisplay = defaultDisplay);
+    private void Start()
+    {
+        go_speakAndDesc.gameObject.SetActive(false);
+        Display(currentDisplay = defaultDisplay);
+    }
     
     public void Display(int enumindx) => Display((FloorDisplays)enumindx);
      
@@ -57,6 +66,18 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void CompleteUITransition() => uiTransitioning = false;
+
+    public void SpeakOrCommentate(string text, float forTime, Action onFinish = null)
+    {
+        go_speakAndDesc.gameObject.SetActive(true);
+        txt_speakAndDesc.text = text;
+        CoroutineRunner.Instance.RunMethodDelayed(() =>
+        {
+            go_speakAndDesc.gameObject.SetActive(false);
+            txt_speakAndDesc.text = text;
+            onFinish?.Invoke();
+        }, forTime);
+    }
 
 
 }

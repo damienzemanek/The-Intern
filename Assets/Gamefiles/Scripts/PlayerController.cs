@@ -1,6 +1,7 @@
 
  using System;
  using System.Collections;
+ using DG.Tweening;
  using UnityEngine;
 using EMILtools.Extensions;
 using Sirenix.OdinInspector;
@@ -22,11 +23,13 @@ public class PlayerController : MonoBehaviour
     public KeyCode phoneKey;
 
     [Required] public GameObject go_blackScreenDie;
+    [Required] public GameObject pr_skeletonCorpse;
 
     public float deathFrameTime = 0.5f;
     
     void Awake() => CursorEX.Set(false, Locked);
 
+    [Button]
     public void Die()
     {
         moveLocked = true;
@@ -35,6 +38,8 @@ public class PlayerController : MonoBehaviour
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {
             go_blackScreenDie.SetActive(true);
+            var corpse = Instantiate(pr_skeletonCorpse, camTransform.position, Quaternion.identity);
+            corpse.transform.parent = null;
             CoroutineRunner.Instance.RunMethodDelayed(() =>
             {
                 UIManager.Instance.Display(UIManager.FloorDisplays.DeathCRT);
@@ -42,16 +47,26 @@ public class PlayerController : MonoBehaviour
             }, 2f);
         }, deathFrameTime);
     }
-    
-    
+
+    private void LateUpdate()
+    {
+        transform.position = transform.position.With(y: 0);
+    }
+
+    public void MoveHeadTo(Vector3 rot)
+    {
+        mouseLookSettings.head.transform.DOLocalRotate(rot, 1f);
+    }
+
+
     public void Update()
-    { 
+    {
         if (Input.GetKeyDown(phoneKey))
         {
             phoneAnimator.gameObject.SetActive(true);
             if (UIManager.Instance.currentDisplay == UIManager.FloorDisplays.HUD)
             {
-                phoneAnimator.PlayOnEnd(usePhoneAnimName, () =>
+                phoneAnimator.CrossFadeOnEnd(usePhoneAnimName, 0.2f, () =>
                 {
                     UIManager.Instance.Display(UIManager.FloorDisplays.Phone);
                 });

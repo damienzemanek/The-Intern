@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DesignPatterns.CreationalPatterns;
+using EMILtools.Extensions;
 using ProSM;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -102,26 +103,44 @@ public class FloorManager : Singleton<FloorManager>
     {
         elevatorDoorAnimator.Play("Close");
     }
-
+    
     [Button]
     public void ResetDeath()
     {
         playerController.go_blackScreenDie.gameObject.SetActive(false);
         UIManager.Instance.Display(UIManager.FloorDisplays.HUD);
         StartLevel();
-        playerController.transform.position = startPos.position;
-        playerController.transform.localRotation = Quaternion.Euler(0, -180, 0);
         nameTagDetector.ManualExit();
-        StartLevel();
+
         writeName.interactable = true;
         writeName.ip_txtName.text = "";
+
         playerController.moveLocked = false;
         playerController.lookLocked = false;
         playerController.stopInputReading = false;
+
         trigger_exitElevator.gameObject.SetActive(true);
+
         currentIntern++;
-        playerController.transform.position = startPos.position;
-        Debug.Log("Reset deeath");
+        
+        CharacterController cc = playerController.Get<CharacterController>();
+        cc.enabled = false;
+        playerController.transform.SetPositionAndRotation(
+            startPos.position,
+            startPos.rotation
+        );
+        cc.enabled = true;
+
+        Debug.Log("Reset death");
+        
+        if (currentIntern == 1)
+        {
+            CoroutineRunner.Instance.RunMethodDelayed(() =>
+            {
+                SlackManager.Instance.SendSlackMsg(SlackManager.Instance.firstDeathSlackMsg);
+            }, 1.4f);
+        }
+
     }
     
     

@@ -17,7 +17,7 @@ namespace EMILtools.Extensions
             [BoxGroup("ReadOnly")] [SerializeField, ReadOnly] Vector2 rot;
             
             [BoxGroup("References")] [SerializeField] [ShowIf("useBody")] Transform body;
-            [BoxGroup("References")] [SerializeField] Transform head;
+            [BoxGroup("References")] [SerializeField] public Transform head;
 
             [field: BoxGroup("References")] [field: ShowInInspector] [field: ReadOnly] public IInputMouseLook Input { get; set; }
             
