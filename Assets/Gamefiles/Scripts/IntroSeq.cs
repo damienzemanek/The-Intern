@@ -5,9 +5,11 @@ using DG.Tweening;
 using EMILtools.Extensions;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class IntroSeq : MonoBehaviour
 {
+    public bool inIntroSeq = false;
     public GameObject go_preIntroUI;
     public Animator IntroSeqAnimator;
     public string startIntroSeqName = "IntroStart";
@@ -25,6 +27,8 @@ public class IntroSeq : MonoBehaviour
 
     public List<GameObject> allDocs = new();
 
+    public UnityEvent OnIntroSeqEnd;
+
     public void StartIntroSeq()
     {
         go_preIntroUI.SetActive(false);
@@ -33,6 +37,7 @@ public class IntroSeq : MonoBehaviour
 
     private void Update()
     {
+        if (!inIntroSeq) return;
         if(Input.GetKeyDown(KeyCode.E)) Sign();
     }
 
@@ -43,6 +48,7 @@ public class IntroSeq : MonoBehaviour
 
     public IEnumerator C_StartSigning()
     {
+        inIntroSeq = true;
          for(int i = 0; i <  numOfDocs; i++)
          {
              var newDoc = Instantiate(pr_DocumentsToSign.Rand(),  t_documentSpawnPt.position, Quaternion.identity);
@@ -62,7 +68,7 @@ public class IntroSeq : MonoBehaviour
          lastDoc.transform.DOMove(tweenOffScreenPos.position, tweenTime);
          yield return new WaitForSeconds(1f);
          allDocs.ForEach(g => g.SetActive(false));
-         
+         IntroSeqAnimator.PlayOnEnd(endIntroSeqName, () => OnIntroSeqEnd?.Invoke());
     }
 
 
