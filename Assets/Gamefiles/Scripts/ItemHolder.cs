@@ -43,7 +43,11 @@ public class ItemHolder : Singleton<ItemHolder>
         holdingItem = null;
     }
 
-    public static bool IsHoldingItem(ItemType itemType) => (Instance.holdingItem.itemType == itemType);
+    public static bool IsHoldingItem(ItemType itemType)
+    {
+        if(Instance.holdingItem == null) return false;
+         return (Instance.holdingItem.itemType == itemType); 
+    }
     
     [Button]
     public void InitializeNotInitializedAudioClipTypes()

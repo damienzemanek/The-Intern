@@ -57,6 +57,7 @@ public class CoffeeMach : MonoBehaviour
         FloorManager.Instance.playerController.Die();
         drownScreen.SetActive(false);
         go_GrabFilledMug.SetActive(true);
+        go_coffeMugObj.gameObject.SetActive(false);
         coffeeMachAnimator.Play(coffeeMugDefaultAnimName);
         yield return new WaitForSeconds(1f);
         running = false;

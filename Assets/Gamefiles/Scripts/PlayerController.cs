@@ -1,6 +1,7 @@
 
  using System;
  using System.Collections;
+ using DG.Tweening;
  using UnityEngine;
 using EMILtools.Extensions;
 using Sirenix.OdinInspector;
@@ -50,6 +51,11 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         transform.position = transform.position.With(y: 0);
+    }
+
+    public void MoveHeadTo(Vector3 rot)
+    {
+        mouseLookSettings.head.transform.DOLocalRotate(rot, 1f);
     }
 
 
