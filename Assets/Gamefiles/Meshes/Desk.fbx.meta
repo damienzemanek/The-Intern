@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: ColorGrid
     second: {fileID: 2100000, guid: 538d1201d5e706e44a16fd990842fbfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 94d8b10493ceb4045bbcb699af1fb379, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
