@@ -3025,6 +3025,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9052576098830067904, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: audioClips._serializedList.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052576098830067904, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: audioClips._serializedList.Array.data[14].Key
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052576098830067904, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: audioClips._serializedList.Array.data[15].Key
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052576098830067904, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: audioClips._serializedList.Array.data[13].Value
+      value: 
+      objectReference: {fileID: 8300000, guid: 166c84453fac2fb48a8e856d29c02265, type: 3}
+    - target: {fileID: 9052576098830067904, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: audioClips._serializedList.Array.data[14].Value
+      value: 
+      objectReference: {fileID: 8300000, guid: c54206d4bd111ae46ae44b2df7fb46c1, type: 3}
+    - target: {fileID: 9052576098830067904, guid: 6c29152d4b99a1640a436df68f4089a8, type: 3}
+      propertyPath: audioClips._serializedList.Array.data[15].Value
+      value: 
+      objectReference: {fileID: 8300000, guid: 811c9e6ff91c60640b4be05763e217f4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

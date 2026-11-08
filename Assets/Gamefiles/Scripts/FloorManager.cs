@@ -151,6 +151,10 @@ public class FloorManager : Singleton<FloorManager>
         cc.enabled = true;
 
         Debug.Log("Reset death");
+
+        var src = UseSourceWithClip(SourceTrack.Long1, AudioClipType.BgMusic1, out var clip);
+        src.clip = clip;
+        src.Play();
         
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {

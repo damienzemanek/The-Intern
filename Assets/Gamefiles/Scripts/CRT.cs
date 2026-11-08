@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using static AudioManager;
 
 public class CRT : MonoBehaviour
 {
@@ -29,7 +30,12 @@ public class CRT : MonoBehaviour
     private void OnEnable()
     {
         foreach (var t in postItDeaths) t.SetActive(false);
-
+        var src = UseSourceWithClip(SourceTrack.Long1, AudioClipType.ComputerAmbience,
+            out var clip);
+        src.loop = true;
+        src.clip = clip;
+        src.Play();
+        
         currentPostItDeath++;
         if (currentPostItDeath < postItDeaths.Count)
         {
@@ -63,6 +69,7 @@ public class CRT : MonoBehaviour
         go_msgSent.SetActive(true);
         CoroutineRunner.Instance.RunMethodDelayed(() =>
         {
+            Source(SourceTrack.Long1).Stop();
             allScreens.ForEach(s => s.SetActive(false));
             FloorManager.Instance.ResetDeath();
         }, 3f);
