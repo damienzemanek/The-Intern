@@ -27,13 +27,16 @@ public class FloorManager : Singleton<FloorManager>
     
     [BoxGroup("Tasks")] public List<TaskData> tasks = new();
     [BoxGroup("Tasks")] public int currentTask = 0;
-    
+
+    [Required] public Transform startPos;
+    [Required] public DetectorMouseClick nameTagDetector;
+    [Required] public WriteName writeName;
     
     public bool HasAlreadyUsedName(string internName) => usedNames.Contains(internName);
 
     public void AssignFirstTask()
     {
-        currentTask = 0;
+        if (currentTask != 0) return;
         tasks[0].onStartTask.Invoke();
         tasks[0].isComplete = false;
         tasks[0].go_taskGrouping.SetActive(true);
@@ -90,6 +93,22 @@ public class FloorManager : Singleton<FloorManager>
     public void E_ExitElevator()
     {
         elevatorDoorAnimator.Play("Close");
+    }
+
+    [Button]
+    public void ResetDeath()
+    {
+        playerController.go_blackScreenDie.gameObject.SetActive(false);
+        StartLevel();
+        playerController.transform.position = startPos.position;
+        playerController.transform.localRotation = Quaternion.Euler(0, -180, 0);
+        nameTagDetector.ManualExit();
+        internName = string.Empty;
+        StartLevel();
+        writeName.interactable = true;
+        playerController.moveLocked = false;
+        playerController.lookLocked = false;
+        playerController.stopInputReading = false;
     }
     
     

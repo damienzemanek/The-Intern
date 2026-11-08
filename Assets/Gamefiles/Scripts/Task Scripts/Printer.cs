@@ -39,6 +39,8 @@ public class Printer : MonoBehaviour
 
     [Required]  public GameObject go_startPrintBtn;
     [Required] public TextMeshPro txt_selfDestruct;
+    [Required] public ParticleSystem vfx_expl;
+
     
     public List<GameObject> disps = new();
 
@@ -99,6 +101,10 @@ public class Printer : MonoBehaviour
 
             if (secondsPassed == 2) selfDestResetBtn.gameObject.SetActive(true);
         }
+        
+        
+        vfx_expl.Play();
+        FloorManager.Instance.playerController.Die();
     }
 
     IEnumerator C_Print()

@@ -55,6 +55,11 @@ public abstract class Detector : MonoBehaviour, IDetectionResponsive
         OnUndetect?.Invoke(go);
         OnUndetectINSP?.Invoke(go);
     }
+
+    public void ManualExit()
+    {
+        detections.Clear();
+    }
     
     public abstract bool IsDetected(GameObject go);
 

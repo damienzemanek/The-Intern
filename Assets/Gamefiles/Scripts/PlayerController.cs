@@ -1,6 +1,9 @@
+
  using System;
-using UnityEngine;
+ using System.Collections;
+ using UnityEngine;
 using EMILtools.Extensions;
+using Sirenix.OdinInspector;
 using static UnityEngine.CursorLockMode;
 
 public class PlayerController : MonoBehaviour
@@ -8,17 +11,31 @@ public class PlayerController : MonoBehaviour
     public bool moveLocked, lookLocked, stopInputReading;
     public float speed;
     public MouseLookEX.MouseLookSettings mouseLookSettings;
-    public CharacterController charController;
-    public Transform camTransform;
+    [Required] public CharacterController charController;
+    [Required] public Transform camTransform;
 
     public string defaultAnimName = "Default";
-    public Animator phoneAnimator;
+    [Required]  public Animator phoneAnimator;
     public string usePhoneAnimName = "Use";
 
+
     public KeyCode phoneKey;
+
+    [Required] public GameObject go_blackScreenDie;
+
+    public float deathFrameTime = 0.5f;
     
     void Awake() => CursorEX.Set(false, Locked);
 
+    public void Die()
+    {
+        moveLocked = true;
+        lookLocked = true;
+        stopInputReading = true;
+        CoroutineRunner.Instance.RunMethodDelayed(() => go_blackScreenDie.SetActive(true), deathFrameTime);
+    }
+    
+    
     public void Update()
     { 
         if (Input.GetKeyDown(phoneKey))
