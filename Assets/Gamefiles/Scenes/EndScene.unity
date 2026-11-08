@@ -494,6 +494,7 @@ MonoBehaviour:
   nameTagDetector: {fileID: 0}
   writeName: {fileID: 0}
   trigger_exitElevator: {fileID: 0}
+  doors: []
   floorState: 0
   elevatorDoorAnimator: {fileID: 0}
   playerController: {fileID: 964422217}
@@ -1813,7 +1814,7 @@ Light:
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 0.81886786, g: 0.69707596, b: 0, a: 1}
-  m_Intensity: 3.2
+  m_Intensity: 5
   m_Range: 10
   m_SpotAngle: 81.70625
   m_InnerSpotAngle: 57.73352
