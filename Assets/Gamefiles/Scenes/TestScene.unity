@@ -6121,10 +6121,11 @@ MonoBehaviour:
     deathReason: Unauthorized removal of limbs from body during minor printer malfunction.
     spr_deathStickyNote: {fileID: 0}
   - internName: 
-    deathReason: 
+    deathReason: Employee ignored company policy of not drowing on company grounds.
+      Refer to Company Policy Section B.45.724.0002
     spr_deathStickyNote: {fileID: 0}
   - internName: 
-    deathReason: 
+    deathReason: 'Did not clean their corpse off of floor '
     spr_deathStickyNote: {fileID: 0}
   - internName: 
     deathReason: 
