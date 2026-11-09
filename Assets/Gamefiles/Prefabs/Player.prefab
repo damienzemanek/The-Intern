@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1609504597952882764
@@ -2517,7 +2517,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "It is with a heavy heart that we have to inform you of the termination
     of your employment here at our company. This is a courtesy email for your behalf.
-    Bellow is the reason listed for termination of your internship:\n\nLISTED REASON
+    Below is the reason listed for termination of your internship:\n\nLISTED REASON
     FOR TERMINATION:\n "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25373ae8c1bfff3489f865b8dd252284, type: 2}
@@ -2626,8 +2626,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 179.78, y: -351.62}
-  m_SizeDelta: {x: 359.57, y: 75.216}
+  m_AnchoredPosition: {x: 171.24265, y: -351.62}
+  m_SizeDelta: {x: 376.6447, y: 75.216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8609965315056656212
 CanvasRenderer:
@@ -2740,7 +2740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4146059938759959321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3221,7 +3221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thank you so much for this oppertunity!
+  m_text: Thank you so much for this opportunity!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 452b7dc9170540343bd4902f8b489140, type: 2}
   m_sharedMaterial: {fileID: 7827704436961399825, guid: 452b7dc9170540343bd4902f8b489140, type: 2}
@@ -9310,6 +9310,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1556065272674423365, guid: 99af136876a304a4ca0af2e09e6425bd, type: 3}
+      propertyPath: audioClips._serializedList.Array.data[20].Value
+      value: 
+      objectReference: {fileID: 8300000, guid: b838f10f3f662134caca095c72f191cc, type: 3}
     - target: {fileID: 7393294824856043893, guid: 99af136876a304a4ca0af2e09e6425bd, type: 3}
       propertyPath: m_Name
       value: AudioManager

@@ -63,7 +63,15 @@ public class IntroSeq : MonoBehaviour
     public void StartSigning() => StartCoroutine(C_StartSigning());
 
     [Button]
-    public void Sign() => signedDoc = true;
+    public void Sign()
+    {
+        if (!signedDoc)
+        {
+            UseSourceWithClip(SourceTrack.Player, AudioClipType.Pen, 
+                out var clip).PlayOneShot(clip);
+        }
+        signedDoc = true;
+    }
 
     public IEnumerator C_StartSigning()
     {
