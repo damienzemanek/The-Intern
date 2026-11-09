@@ -40,7 +40,6 @@ public class Printer : MonoBehaviour
     [Required]  public GameObject selfDestResetBtn;
 
     [Required] public GameObject go_printedPaper;
-    [Required] public Transform outcomeLoc;
 
 
     [Required]  public GameObject go_placerPaper;

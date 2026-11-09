@@ -42,6 +42,9 @@ public class Ask : MonoBehaviour
 
         yield return new WaitForSeconds(shootTime);
         
+        AudioManager.UseSourceWithClip(AudioManager.SourceTrack.Player, AudioManager.AudioClipType.Gunshot,
+            out var clip).PlayOneShot(clip);
+        
         FloorManager.Instance.playerController.Die();
         
         yield return new WaitForSeconds(2);
